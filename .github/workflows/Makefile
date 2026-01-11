@@ -1,10 +1,10 @@
 # Sonic 1 Forever WASM Makefile
 CC = em++
 
-# These flags tell the compiler to turn on Touch Controls and use Web libraries
-CXXFLAGS = -O3 -std=c++11 -DRETRO_USING_SDL2 -DRETRO_TOUCH_CONTROLS -DRETRO_USE_HAPTICS
+# Game logic flags: Enable SDL2, Touch Controls for mobile, and Haptics (vibration)
+CXXFLAGS = -O3 -std=c++11 -DRETRO_USING_SDL2 -DRETRO_TOUCH_CONTROLS -DRETRO_USE_HAPTICS -DRETRO_USE_NETWORKING
 
-# Emscripten specific settings
+# Emscripten specific flags to turn C++ into a Website
 EM_FLAGS = -s WASM=1 \
            -s USE_SDL=2 \
            -s USE_SDL_MIXER=2 \
@@ -15,8 +15,8 @@ EM_FLAGS = -s WASM=1 \
            -s "EXPORTED_RUNTIME_METHODS=['ccall']" \
            --shell-file shell_minimal.html
 
-# This automatically finds all your .cpp files so you don't have to list them one by one
-SOURCES = $(wildcard RSDKv4/*.cpp) $(wildcard RSDKv4/main/*.cpp)
+# This finds all the Sonic engine code files automatically
+SOURCES = $(wildcard RSDKv4/*.cpp) $(wildcard RSDKv4/main/*.cpp) $(wildcard RSDKv4/S3/*.cpp)
 
 all:
 	$(CC) $(SOURCES) $(CXXFLAGS) $(EM_FLAGS) -o index.html
