@@ -1,0 +1,15 @@
+{
+  "short_name": "S1F",
+  "name": "Sonic 1 Forever",
+  "icons": [
+    {
+      "src": "https://raw.githubusercontent.com/TeamForeverCustoms/Sonic-1-Forever-Android/main/app/src/main/res/mipmap-xxxhdpi/ic_launcher.png",
+      "type": "image/png",
+      "sizes": "192x192"
+    }
+  ],
+  "start_url": "./index.html",
+  "background_color": "#000000",
+  "display": "standalone",
+  "theme_color": "#0000FF"
+}
