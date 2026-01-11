@@ -27,16 +27,15 @@ jobs:
 
       - name: Build WASM
         run: |
-          # This command will likely fail the first time. 
-          # That is normal! It tells us exactly what we need to fix.
-          make wasm
+          # This runs the 'all' instruction in your Makefile
+          make all
 
       - name: Upload Build Artifact
         uses: actions/upload-artifact@v4
         with:
           name: s1f-wasm-build
           path: |
-            wasm/
             index.html
-            *.js
-            *.wasm
+            index.js
+            index.wasm
+            index.data
